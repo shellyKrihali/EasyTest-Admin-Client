@@ -1,5 +1,4 @@
 <nav class="navbar navbar-default">
-
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
@@ -15,19 +14,7 @@
     </div>
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true"
       *ngIf="!getLoggedUser();else elseBlock">
-      <!-- <ul class="nav navbar-nav navbar-center">
 
-        <li><a routerLink="/">Home</a></li>
-
-      </ul> -->
-      <!-- <ul class="nav navbar-nav navbar-right">
-
-        <ul class="nav navbar-nav navbar-right">
-          <li routerLinkActive="active"><a routerLink="/sign-up">Sign-Up</a></li>
-          <li routerLinkActive="active"><a routerLink="/log-in">Log-In</a></li>
-        </ul>
-
-      </ul> -->
     </div>
     <ng-template #elseBlock>
       <div>
@@ -36,26 +23,6 @@
           <li><a routerLink="/moodleIntegration">Integration to Moodle</a></li>
           <li><a routerLink="/manualAction">Manual Action for Admin</a></li>
           <li><a routerLink="/violationPage">Violations Report</a></li>
-          
-
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" routerLink="courses" id="navbarDropdownMenuLink">
-              Courses
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <div>
-                <a class="nav-link dropdown-item" routerLink="courses/followed-courses">My Courses</a>
-              </div>
-              <div>
-                <a class="dropdown-item" routerLink="courses/search">Follow Courses</a>
-              </div>
-            </div>
-          </li> -->
-
-          <!--           
-          <li><a routerLink="/upload-file">Upload File</a></li>
-          <li><a routerLink="/directory">My Exam Directories</a></li> -->
-
 
         </ul>
       </div>
@@ -64,12 +31,9 @@
           <p>HI, {{user.email}}</p>
         </li>
         <li class="user"><img class="users-img" [src]="user.imageUrl" /> </li>
-        <!-- <li><a routerLink='/updeate-users-details'>Settings</a></li> -->
-        <li><a (click)="logOut()" href="#">Log Out</a></li>
+        <li><a (click)="logOut()" >Log Out</a></li>
       </ul>
     </ng-template>
 
   </div>
-
-
 </nav>

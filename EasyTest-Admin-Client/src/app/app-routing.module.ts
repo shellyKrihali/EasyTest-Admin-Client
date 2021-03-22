@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'moodleIntegration', component: MoodleIntegrationComponent, canActivate: [AuthGuard] },
   { path: 'manualAction', component: ManualAdminActionComponent, canActivate: [AuthGuard] },
   { path: 'violationPage', component: ViolationReportComponent, canActivate: [AuthGuard]  }
-  ,{ path: '**', redirectTo: '' }
+  ,{ path: '**', redirectTo: 'log-in' }
 
 ];
 

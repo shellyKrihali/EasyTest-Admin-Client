@@ -14,30 +14,41 @@ import { NgModule } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  email: string;
-  password: string;
-  isValidDetails: Boolean;
+  serverErr: string;
+  isValid: boolean = true;
+  loginForm = this.fb.group({
+    email: ['', { validators: [Validators.required, Validators.email] }
+
+    ],
+    password: ['', { validators: [Validators.required, Validators.minLength(5)] }],
+  });
 
   constructor(
 
     private router: Router,
     private service: UserService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.isValidDetails = true;
+    //this.isValidDetails = true;
   }
 
   onSubmitLogIn() {
-    this.isValidDetails = true;
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
 
-    this.service.login(this.email, this.password).catch((err: HttpErrorResponse) => {
+    console.log("yes");
+    this.isValid = true;
+    this.service.login(email, password).catch((err: HttpErrorResponse) => {
       console.log('An error occurred:', err.error);
-      this.isValidDetails = false;
+      this.serverErr = err.error.message;
+      this.isValid = false;
     }).then(() => {
-      if (this.isValidDetails)
+      if (this.isValid)
         this.gotoHome();
     });
+
 
   }
 
@@ -45,5 +56,5 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  isValidEmailCheack() { return this.isValidDetails }
+  isValidEmailCheack() { return this.isValid }
 }

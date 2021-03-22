@@ -8,7 +8,11 @@ import { ManualAdminActionComponent } from './manual-admin-action/manual-admin-a
 import { ViolationReportComponent } from './violation-report/violation-report.component'
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'log-in', component: LoginComponent },
+  
+  //, { path: 'land-page', component: LandPageComponent }
+  //,{ path: 'log-in', component: LoginComponent }
+
   { path: 'home', component: MainPageComponent, canActivate: [AuthGuard] },
   { path: 'moodleIntegration', component: MoodleIntegrationComponent, canActivate: [AuthGuard] },
   { path: 'manualAction', component: ManualAdminActionComponent, canActivate: [AuthGuard] },
@@ -18,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

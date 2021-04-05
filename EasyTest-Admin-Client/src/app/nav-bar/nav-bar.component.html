@@ -21,8 +21,24 @@
         <ul class="nav navbar-nav navbar-center">
           <li><a routerLink="/home">Home</a></li>
           <li><a routerLink="/moodleIntegration">Integration to Moodle</a></li>
-          <li><a routerLink="/manualAction">Manual Action for Admin</a></li>
           <li><a routerLink="/violationPage">Violations Report</a></li>
+
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" routerLink="/manualAction" id="navbarDropdownMenuLink">Manual Action for Admin</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div>
+              <a class="nav-link dropdown-item" routerLink="manualAction/students">Manage Students</a>
+            </div>
+            <div>
+              <a class="dropdown-item" routerLink="/manualAction/course">Manage Courses</a>
+            </div>
+            <div>
+              <a class="dropdown-item" routerLink="/manualAction/courseapp">Manage Course Appearance</a>
+            </div>
+          </div>
+        </li>
+
+
 
         </ul>
       </div>

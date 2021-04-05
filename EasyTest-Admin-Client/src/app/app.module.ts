@@ -13,6 +13,9 @@ import { ManualAdminActionComponent } from './manual-admin-action/manual-admin-a
 import { ViolationReportComponent } from './violation-report/violation-report.component'
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ManageCoursesComponent } from './manual-admin-action/manage-courses/manage-courses.component';
+import { ManageCourseappComponent } from './manual-admin-action/manage-courseapp/manage-courseapp.component';
+import { ManageStudentsComponent } from './manual-admin-action/manage-students/manage-students.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     NavBarComponent,
     MoodleIntegrationComponent,
     ManualAdminActionComponent,
-    ViolationReportComponent
+    ViolationReportComponent,
+    ManageCoursesComponent,
+    ManageCourseappComponent,
+    ManageStudentsComponent
   ],
   imports: [
     BrowserModule,

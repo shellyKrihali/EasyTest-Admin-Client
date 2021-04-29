@@ -1,4 +1,8 @@
+import {CourseAppearance} from "./courseAppearance";
+
 export class Course {
-    name:string;
-    _id:string;
- }
+  _id: string;
+  name: string;
+  appearances: CourseAppearance[];
+
+}

@@ -1,1 +1,129 @@
-<p>manage-courses works!</p>
+<div class="d-flex align-items-center">
+  <h1 class="page-header">Courses</h1>
+  <button type="button" class="btn btn-primary ml-auto" (click)="openCOurseModal()">
+    Create
+  </button>
+</div>
+<hr>
+<div class="row my-2">
+  <div class="col-sm-12">
+    <div class="d-flex">
+      <div style="width: 200px">
+        <label for=""><b> Filter</b></label>
+        <input type="text" class="form-control" [(ngModel)]="search" style="border: 2px solid black">
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Course Appearances</th>
+<!--    <th scope="col">Students</th>-->
+    <th>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let c of courses | filter:{ name: search} : false;let i=index" [attr.data-index]="i">
+    <td>{{i}}</td>
+
+    <td>{{c.name}}</td>
+    <td>
+      <ul style="max-height: 150px;overflow-y: auto">
+        <li *ngFor="let item of c.appearances; let i=index;" (click)="openAppearanceModal(c._id,item)"><a
+          class="badge badge-secondary">{{item.name}}</a></li>
+      </ul>
+    </td>
+<!--    <td>-->
+<!--      <ul style="max-height: 150px;overflow-y: auto">-->
+<!--        <li *ngFor="let item of c.students; let i=index;">{{item}}</li>-->
+<!--      </ul>-->
+<!--    </td>-->
+    <td>
+      <button class="btn btn-primary"
+              (click)="openAppearanceModal(c._id)">Add
+        Appearance
+      </button>
+      <button class="btn btn-success" (click)="openCOurseModal(c)">Update
+      </button>
+      <button (click)="delete(c)" class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!--<div class="modal fade" id="appearanceModal" appearanceModal tabindex="-1" role="dialog"-->
+<!--     aria-labelledby="exampleModalLongTitle"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-lg" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLongTitle">create/edit user</h5>-->
+<!--        <button type="button" #closeBtn class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <div class="form-group">-->
+<!--          <label>Name</label>-->
+<!--          <input type="text" class="form-control" placeholder="name" [(ngModel)]="appearance.name">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <label>Date</label>-->
+<!--          <div class="input-group">-->
+<!--            <input class="form-control" placeholder="yyyy-mm-dd"-->
+<!--                   name="dp" [(ngModel)]="appearance.exams.exam" ngbDatepicker #d="ngbDatepicker">-->
+<!--            <div class="input-group-append">-->
+<!--              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <label>WithMaterials</label>-->
+<!--          <input-->
+<!--            type="checkbox"-->
+<!--            [(ngModel)]="appearance.exams.withMaterials"-->
+<!--            [ngModelOptions]="{standalone: true}"/>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <label>Duration</label>-->
+<!--          <input type="number" class="form-control" placeholder="name" [(ngModel)]="appearance.exams.duration">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <label>Students</label>-->
+<!--          <div class="row">-->
+<!--            <div class="col-sm-6">-->
+<!--              <div class="d-flex align-items-center">-->
+<!--                <select [(ngModel)]="selectedStudent" class="form-control">-->
+<!--                  <option *ngFor="let s of students" [ngValue]="s">{{s.name}}</option>-->
+<!--                </select>-->
+<!--                <button class="btn btn-warning ml-auto" (click)="addStudent()">+</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6">-->
+<!--              <ul>-->
+<!--                <li *ngFor="let s of appearance.students; let i=index">-->
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <span>{{s.name}}</span>-->
+
+<!--                    <samll class="text-danger ml-auto" (click)="appearance.students.splice(i,1)">Remove</samll>-->
+<!--                  </div>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary" (click)="saveApearaance()">Save changes</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

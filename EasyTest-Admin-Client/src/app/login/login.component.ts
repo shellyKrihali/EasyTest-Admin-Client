@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { User } from '../models/user'
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../services/user.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {User} from '../models/user'
+import {FormsModule} from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -17,18 +18,19 @@ export class LoginComponent implements OnInit {
   serverErr: string;
   isValid: boolean = true;
   loginForm = this.fb.group({
-    email: ['', { validators: [Validators.required, Validators.email] }
+    email: ['', {validators: [Validators.required, Validators.email]}
 
     ],
-    password: ['', { validators: [Validators.required, Validators.minLength(5)] }],
+    password: ['', {validators: [Validators.required, Validators.minLength(5)]}],
   });
 
   constructor(
-
     private router: Router,
     private service: UserService,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private cookieService: CookieService
+  ) {
+  }
 
   ngOnInit(): void {
     //this.isValidDetails = true;
@@ -45,8 +47,16 @@ export class LoginComponent implements OnInit {
       this.serverErr = err.error.message;
       this.isValid = false;
     }).then(() => {
-      if (this.isValid)
+      if (!this.service.checkIfUserIsAdmin()) {
+        this.serverErr = 'User is not admin';
+        this.isValid = false;
+        this.service.logOut();
+        return;
+      }
+      if (this.isValid) {
         this.gotoHome();
+      }
+
     });
 
 
@@ -56,5 +66,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  isValidEmailCheack() { return this.isValid }
+  isValidEmailCheack() {
+    return this.isValid
+  }
 }

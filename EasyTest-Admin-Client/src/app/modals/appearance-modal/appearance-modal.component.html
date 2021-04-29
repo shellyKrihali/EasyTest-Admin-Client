@@ -1,0 +1,88 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Appearance</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="name" [(ngModel)]="appearance.name">
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6">
+        <label>Date</label>
+        <div class="input-group">
+          <input type="text"
+                 class="form-control"
+                 #dp="bsDatepicker"
+                 bsDatepicker
+                 [(bsValue)]="appearance.exams.exam">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <timepicker [(ngModel)]="examTime" [showMeridian]="false"></timepicker>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6">
+        <label>Date</label>
+        <div class="input-group">
+          <input type="text"
+                 class="form-control"
+                 #dp="bsDatepicker"
+                 bsDatepicker
+                 [(bsValue)]="appearance.exams.remake">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <timepicker [(ngModel)]="remakeTime" [showMeridian]="false"></timepicker>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+
+    <input
+      type="checkbox"
+      [(ngModel)]="appearance.exams.withMaterials"
+      [ngModelOptions]="{standalone: true}"/>
+    <label class="ml-2">With Materials?</label>
+  </div>
+  <div class="form-group">
+    <label>Duration</label>
+    <input type="number" class="form-control" placeholder="name" [(ngModel)]="appearance.exams.duration">
+  </div>
+  <div class="form-group" *ngIf="students &&appearance._id">
+    <label>Students</label>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex align-items-center">
+          <select [(ngModel)]="selectedStudent" class="form-control">
+            <option *ngFor="let s of students" [ngValue]="s">{{s.name}}</option>
+          </select>
+          <button class="btn btn-warning ml-auto" (click)="addStudent()">+</button>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <ul style="list-style-type:none; height:200px; overflow-y:auto;padding-left: 0;margin-top: 20px;">
+          <li *ngFor="let s of appearance.students; let i=index">
+            <div class="d-flex align-items-center">
+              <span>{{s.name}}</span>
+
+              <samll class="text-danger ml-auto" (click)="removeStudent(s,i)" style="cursor:pointer;">Remove</samll>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" (click)="onSubmit()">Save</button>
+</div>
+

@@ -58,6 +58,7 @@ export class UserService {
     formData.append('name', user.name);
     formData.append('email', user.email);
     formData.append('password', user.password);
+    formData.append('role', user.type);
 
     return this.http.put<any>(`${environment.apiUrl}/users/sign-up`, formData);
 

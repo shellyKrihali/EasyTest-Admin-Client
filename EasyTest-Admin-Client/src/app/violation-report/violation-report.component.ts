@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./violation-report.component.css']
 })
 export class ViolationReportComponent implements OnInit {
-
+  reports:any[]= [];
   constructor() { }
 
   ngOnInit(): void {

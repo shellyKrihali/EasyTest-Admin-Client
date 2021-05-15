@@ -1,1 +1,27 @@
-<p>violation-report works!</p>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Log in time</th>
+      <th scope="col">Log out time</th>
+      <th>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+  
+    <tr *ngFor="let r of reports ;let i=index"
+        [attr.data-index]="i">
+      <td>{{i}}</td>
+      <td>{{v.name}}</td>
+      <td>{{v.email}}</td>
+      <td>{{v.logintime}}</td>
+      <td>{{v.logouttime}}</td>
+      <td>
+        <button (click)="delete(u)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>

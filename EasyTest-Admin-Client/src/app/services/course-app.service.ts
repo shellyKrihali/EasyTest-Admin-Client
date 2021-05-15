@@ -34,8 +34,18 @@ export class CourseAppService {
     /* let headers = new HttpHeaders();
      headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
      const options = { headers: headers };*/
-    return this.http.put<any>('${environment.apiUrl}/course-appearances/upload/${courseId}', data//,options(in case bar adds isAuth token to this url)
+    return this.http.put<any>(`${environment.apiUrl}/course-appearances/upload/${courseId}`, data//,options(in case bar adds isAuth token to this url)
     ).toPromise;
 
+  }
+  
+
+  public getAllCourseStudents(courseAppId):Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const httpOptions = {
+      headers: headers
+    };
+    return this.http.get<any>(`${environment.apiUrl}/course-appearances/students/${courseAppId}`, httpOptions).toPromise();
   }
 }

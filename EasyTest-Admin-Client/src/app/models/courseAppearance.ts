@@ -3,5 +3,5 @@ export class CourseAppearance {
   name: string;
   couresId: string;
   examDate: Date;
-  students: string[];
+  students: [{student: string},{loggedIn:boolean}];
 }

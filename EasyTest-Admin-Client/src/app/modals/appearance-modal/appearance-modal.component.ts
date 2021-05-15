@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BsModalRef} from "ngx-bootstrap/modal";
 import {Subject} from "rxjs";
+import { CourseAppService } from 'src/app/services/course-app.service';
 import {CourseService} from "../../services/course.service";
 
 @Component({
@@ -17,10 +18,11 @@ export class AppearanceModalComponent implements OnInit {
   examTime = new Date();
   remakeTime = new Date();
 
-  constructor(private bsModalRef: BsModalRef, private courseService: CourseService) {
+  constructor(private bsModalRef: BsModalRef, private courseService: CourseService,private courseAppService:CourseAppService) {
   }
 
   ngOnInit(): void {
+    console.log(this.appearance)
     if (!this.appearance) {
       this.appearance = {
         name: '',
@@ -31,12 +33,22 @@ export class AppearanceModalComponent implements OnInit {
           withMaterials: false,
           duration: 0
         },
-        students: [],
+        students: [{student:''},{loggedIn:false}],
       };
     } else {
-      this.appearance.students = this.appearance.students.map((sId) => {
-        return this.students.find(s => s._id === sId);
-      });
+
+
+
+
+      // this.appearance.students = this.appearance.students.map((sId) => {
+      //   return this.students.find(s => s._id === sId.stutent);
+      // });
+      this.courseAppService.getAllCourseStudents(this.appearance._id).then(res=>{
+        console.log(res)
+        this.appearance.students = res.students.map((element=>{
+          return element.student;
+        }));
+      })
       this.appearance.exams.exam = new Date(this.appearance.exams.exam);
       this.appearance.exams.remake = new Date(this.appearance.exams.remake);
 
@@ -45,6 +57,7 @@ export class AppearanceModalComponent implements OnInit {
 
       this.remakeTime.setHours(this.appearance.exams.remake.getHours());
       this.remakeTime.setMinutes(this.appearance.exams.remake.getMinutes());
+      console.log(this.appearance)
     }
   }
 

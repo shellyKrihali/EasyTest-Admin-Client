@@ -58,6 +58,7 @@ export class ManageCoursesComponent implements OnInit {
         });
       });
     });
+
   }
 
   delete(c: any) {

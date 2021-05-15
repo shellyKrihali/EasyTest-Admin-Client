@@ -56,6 +56,12 @@ export class ManageCoursesComponent implements OnInit {
             return s._id == id;
           })?.name;
         });
+        c.appearances=[];
+        this.courseService.getAllCourseAppearances(c._id).subscribe(res => {
+          res.appearances.forEach(element => {
+           c.appearances.push(element);
+          });
+        })
       });
     });
 

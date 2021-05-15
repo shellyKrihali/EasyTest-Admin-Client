@@ -35,8 +35,8 @@ export class CourseService {
 
   }
 
-  public getAllCourseAppearances() {
-    return this.http.get<any>(`${environment.apiUrl}/courses/all-appearances`);
+  public getAllCourseAppearances(courseid) {//by course id!!!
+    return this.http.get<any>(`${environment.apiUrl}/courses/all-appearances/${courseid}`);
   }
 
   //PUT /courses/upload

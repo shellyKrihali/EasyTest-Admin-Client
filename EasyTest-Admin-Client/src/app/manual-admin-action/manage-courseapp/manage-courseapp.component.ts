@@ -24,7 +24,7 @@ export class ManageCourseappComponent implements OnInit {
   }
 
   private getCouseAppearancesData() {
-    this.courseService.getAllCourseAppearances().subscribe(res => {
+    this.courseService.getAllCourseAppearances(this.courseAppearance.couseId).subscribe(res => {
       this.courseApps = res;
     });
   }

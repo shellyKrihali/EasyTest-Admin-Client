@@ -11,5 +11,10 @@ export class MoodleIntegrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  updateStudents(){
 
+  }
+  updateCourses(){
+    
+  }
 }

@@ -1,0 +1,11 @@
+.btn-group button {
+    display: block;
+    padding: 10px 24px; 
+    align-self: center;
+    margin: auto;
+}
+.divider{
+    width:15px;
+    height:auto;
+    display:inline-block;
+}

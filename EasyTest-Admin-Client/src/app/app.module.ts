@@ -24,6 +24,8 @@ import {CourseModalComponent} from './modals/course-modal/course-modal.component
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
 import {FilterPipe} from "./filter.pipe";
 import {TimepickerModule} from "ngx-bootstrap/timepicker";
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import {TimepickerModule} from "ngx-bootstrap/timepicker";
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     // NgbModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),

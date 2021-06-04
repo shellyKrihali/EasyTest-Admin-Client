@@ -48,4 +48,13 @@ export class CourseAppService {
     };
     return this.http.get<any>(`${environment.apiUrl}/course-appearances/students/${courseAppId}`, httpOptions).toPromise();
   }
+
+  public getCourseAppReport(courseAppId){
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const httpOptions = {
+      headers: headers
+    };
+    return this.http.get<any>(`${environment.apiUrl}/course-appearances/students/report/${courseAppId}`, httpOptions);
+  }
 }

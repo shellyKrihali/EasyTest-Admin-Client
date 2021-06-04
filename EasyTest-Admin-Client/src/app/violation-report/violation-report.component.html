@@ -1,3 +1,14 @@
+<h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Choose Course Appearance</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let app of apps" [value]="app.name">
+      {{app.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
 <table class="table">
     <thead class="thead-dark">
     <tr>
@@ -12,7 +23,7 @@
     </thead>
     <tbody>
   
-    <tr *ngFor="let r of reports ;let i=index"
+    <!--tr *ngFor="let r of reports ;let i=index"
         [attr.data-index]="i">
       <td>{{i}}</td>
       <td>{{v.name}}</td>
@@ -22,6 +33,6 @@
       <td>
         <button (click)="delete(u)" class="btn btn-danger">Delete</button>
       </td>
-    </tr>
+    </tr-->
     </tbody>
   </table>

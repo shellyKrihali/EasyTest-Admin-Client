@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'violationPage', component: ViolationReportComponent, canActivate: [AuthGuard]  },
   { path: 'manualAction/courseapp', component: ManageCourseappComponent, canActivate: [AuthGuard]  },
   { path: 'manualAction/course', component: ManageCoursesComponent, canActivate: [AuthGuard]  },
-  { path: 'manualAction/students', component: ManageStudentsComponent, canActivate: [AuthGuard]  }
+  { path: 'manualAction/students', component: ManageStudentsComponent, canActivate: [AuthGuard]  },
+  { path: 'manualAction/violation', component: ViolationReportComponent }
 
 
   

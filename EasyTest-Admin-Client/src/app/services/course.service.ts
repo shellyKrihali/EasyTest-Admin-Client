@@ -100,13 +100,16 @@ export class CourseService {
     };
     return this.http.put<any>(`${environment.apiUrl}/course-appearances/add-student/${courseAppId}`, {userId: sId},httpOptions);
   }
-  deleteCourseApp(courseAppId: any,courseId: any){
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
-    const httpOptions = {
-      headers: headers
+  deleteCourseApp(appId: any,courseId: any){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        appId: appId
+      },
     };
-    return this.http.delete<any>(`${environment.apiUrl}/appearance/${courseId}`,courseAppId);//TODO
+    return this.http.delete<any>(`${environment.apiUrl}/courses/appearance/`,options);
 
   }
 }

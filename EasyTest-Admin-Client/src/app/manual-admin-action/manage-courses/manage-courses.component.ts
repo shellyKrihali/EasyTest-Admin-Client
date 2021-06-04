@@ -106,6 +106,8 @@ export class ManageCoursesComponent implements OnInit {
   }
 
   openAppearanceModal(courseId, appearance?) {
+    console.log(appearance);
+    console.log(this.students);
     const state = {backdrop: true, initialState: {appearance: appearance, students: this.students, courseId}};
     this.modalRef = this.modalService.show(AppearanceModalComponent, state);
     // if (appearance) {

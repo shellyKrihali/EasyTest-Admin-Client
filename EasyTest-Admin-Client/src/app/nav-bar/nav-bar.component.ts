@@ -40,6 +40,6 @@ export class NavBarComponent implements OnInit {
     console.log("Log Out");
     this.cookieService.delete("user");
     this.cookieService.delete("token");
-    this.router.navigate(['/home']);
+    this.router.navigate(['/log-in']);
   }
 }

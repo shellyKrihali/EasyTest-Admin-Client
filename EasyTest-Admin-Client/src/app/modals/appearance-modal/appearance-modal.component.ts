@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import {BsModalRef} from "ngx-bootstrap/modal";
 import {Subject} from "rxjs";
 import { CourseAppService } from 'src/app/services/course-app.service';
@@ -18,7 +19,7 @@ export class AppearanceModalComponent implements OnInit {
   examTime = new Date();
   remakeTime = new Date();
 
-  constructor(private bsModalRef: BsModalRef, private courseService: CourseService,private courseAppService:CourseAppService) {
+  constructor(private router: Router,private bsModalRef: BsModalRef, private courseService: CourseService,private courseAppService:CourseAppService) {
   }
 
   ngOnInit(): void {
@@ -96,6 +97,7 @@ export class AppearanceModalComponent implements OnInit {
   public onCancel(): void {
     this.onClose.next(null);
     this.bsModalRef.hide();
+    
   }
 
   removeStudent(s: any, index) {
@@ -105,5 +107,16 @@ export class AppearanceModalComponent implements OnInit {
     }, (err) => {
       alert('Delete students failed');
     });
+  }
+  onDelete(){
+    console.log(this.appearance._id);
+    console.log(this.appearance.couresId);
+    this.courseService.deleteCourseApp(this.appearance._id, this.appearance.couresId).subscribe(res=>
+      {
+        console.log("delete course app succeed")
+      }, (err)=>{
+        alert('Delete CourseApp failed');
+      });
+    this.onCancel();
   }
 }

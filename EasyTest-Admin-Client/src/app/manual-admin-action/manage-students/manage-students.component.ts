@@ -55,7 +55,8 @@ export class ManageStudentsComponent implements OnInit {
       this.summaries = res[1].summaries;
       this.courses = res[2].courses;
 
-      this.users.forEach(u => {
+      //console.log(this.users);
+     /* this.users.forEach(u => {
         u.summaries = u.uploadedSummaries.map(sid => {
           return this.summaries.find(fs => {
             return fs._id == sid;
@@ -66,7 +67,7 @@ export class ManageStudentsComponent implements OnInit {
             return fs._id == sid;
           }).name;
         });
-      });
+      });*/
     });
   }
 

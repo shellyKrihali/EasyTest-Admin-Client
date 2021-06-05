@@ -1,38 +1,35 @@
-<h4>Basic mat-select</h4>
-<mat-form-field appearance="fill">
-  <mat-label>Choose Course Appearance</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let app of apps" [value]="app.name">
-      {{app.name}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-
-<table class="table">
+<div class="select-course">
+  <mat-form-field appearance="fill">
+    <mat-label>Choose Course Appearance</mat-label>
+    <mat-select [(ngModel)]="selectedApp" (selectionChange)="reloadTable()" name="action">
+      <mat-option class="my-option" *ngFor="let app of apps" [value]="app">
+        {{app.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="report-table">
+  <table class="table">
     <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Log in time</th>
-      <th scope="col">Log out time</th>
-      <th>
-      </th>
-    </tr>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Login Counts</th>
+        <th scope="col">Login Hours</th>
+
+      </tr>
     </thead>
-    <tbody>
-  
-    <!--tr *ngFor="let r of reports ;let i=index"
-        [attr.data-index]="i">
-      <td>{{i}}</td>
-      <td>{{v.name}}</td>
-      <td>{{v.email}}</td>
-      <td>{{v.logintime}}</td>
-      <td>{{v.logouttime}}</td>
-      <td>
-        <button (click)="delete(u)" class="btn btn-danger">Delete</button>
-      </td>
-    </tr-->
+    <tbody *ngFor="let report of reports">
+      <td>{{report.student.name}}</td>
+      <td>{{report.student.email}}</td>
+      <td>{{report.loginCounts}}</td>
+      <ul >
+        <li *ngFor="let date of report.loginDates">{{date}}</li>
+      </ul>
+
+      
+
+
     </tbody>
   </table>
+</div>

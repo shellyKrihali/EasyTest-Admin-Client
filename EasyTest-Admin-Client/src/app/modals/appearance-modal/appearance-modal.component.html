@@ -71,9 +71,8 @@
         <ul style="list-style-type:none; height:200px; overflow-y:auto;padding-left: 0;margin-top: 20px;">
           <li *ngFor="let s of appearance.students; let i=index">
             <div class="d-flex align-items-center">
-              <span>{{s?.name}}</span>
-
-              <samll class="text-danger ml-auto" (click)="removeStudent(s,i)" style="cursor:pointer;">Remove</samll>
+              <span>{{s.student.name}}</span>
+              <samll class="text-danger ml-auto" (click)="removeStudent(s.student,i)" style="cursor:pointer;">Remove</samll>
             </div>
           </li>
         </ul>
@@ -83,7 +82,7 @@
 
 </div>
 <div class="modal-footer">
-  <button class="btn btn-warning" (click)="onDelete()">Delete Appearance</button>
+  <!--button class="btn btn-warning" (click)="onDelete()">Delete Appearance</button-->
   <button class="btn btn-primary" (click)="onSubmit()">Save</button>
 </div>
 

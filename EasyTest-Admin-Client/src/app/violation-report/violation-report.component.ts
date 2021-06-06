@@ -44,6 +44,7 @@ export class ViolationReportComponent implements OnInit {
         console.log(res)
         res.students.forEach(element => {
           var new_dates = [];
+          var new_dates_list=[]
           element.loginDates.forEach(date => {
             var temp_date = new Date(date)
             var min = temp_date.getHours();
@@ -53,7 +54,12 @@ export class ViolationReportComponent implements OnInit {
             new_dates.push(date)
 
           });
-          res.students[res.students.indexOf(element)].loginDates = new_dates
+          console.log(new_dates)
+          
+          for( var i=0; i<new_dates.length ; i+=2){
+            new_dates_list.push(new_dates[i])
+          }
+          res.students[res.students.indexOf(element)].loginDates = new_dates_list
 
 
         });

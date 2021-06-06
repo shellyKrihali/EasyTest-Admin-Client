@@ -44,16 +44,19 @@ export class AppearanceModalComponent implements OnInit {
       // this.appearance.students = this.appearance.students.map((sId) => {
       //   return this.students.find(s => s._id === sId.stutent);
       // });
-      this.appearance.students=this.appearance.students.map((sId)=> {
+      
+     /* this.appearance.students=this.appearance.students.map((sId)=> {
               return this.students.find(s => s._id === sId.student);
 
-      })
-     /* this.courseAppService.getAllCourseStudents(this.appearance._id).then(res=>{
-        console.log(res);
-        this.appearance.students = res.students.map((element=>{
-          return this.students.find(s=> s._id == element.student);
-        }));
       })*/
+      this.courseAppService.getAllCourseStudents(this.appearance._id).then(res=>{
+        console.log(res);
+        this.appearance.students = res.students;
+       
+      /*  this.appearance.students = res.students.map((element=>{
+          return this.students.find(s=> s._id == element.student);
+        }));*/
+      })
       this.appearance.exams.exam = new Date(this.appearance.exams.exam);
       this.appearance.exams.remake = new Date(this.appearance.exams.remake);
 

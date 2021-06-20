@@ -1,19 +1,28 @@
 <form [formGroup]="loginForm" #formDirective="ngForm" (ngSubmit)="onSubmitLogIn()">
   <div id="login-box">
     <div class="left">
-      <h1>Log in</h1>
+
       <mat-form-field>
         <input matInput placeholder="Email" formControlName="email">
       </mat-form-field>
-      <br>
+
       <mat-form-field>
         <input matInput type="password" placeholder="Password" formControlName="password">
       </mat-form-field>
-
-      <button type="submit" [disabled]="!loginForm.valid" mat-button 
+      <button type="submit" [disabled]="!loginForm.valid" mat-button
         class="mat-raised-button mat-primary social-signin">Login</button>
       <mat-error *ngIf="!isValid">{{serverErr}}</mat-error>
 
+    </div>
+
+    <div class="right social">
+      <!-- <span class="loginwith">Sign in with<br />social network</span>
+
+      <button class="social-signin facebook"><i class="fa fa-facebook"></i>
+        Log in with facebook</button>
+      <button class="social-signin twitter"><i class="fa fa-twitter"></i>
+        Log in with Twitter</button>
+      <button class="social-signin google"><i class="fa fa-google"></i>Log in with Google+</button> -->
     </div>
   </div>
 </form>

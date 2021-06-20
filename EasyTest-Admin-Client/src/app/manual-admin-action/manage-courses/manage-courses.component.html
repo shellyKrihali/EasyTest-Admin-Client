@@ -34,7 +34,7 @@
 
     <td>{{c.name}}</td>
     <td>
-      <ul style="max-height: 150px;overflow-y: auto">
+      <ul style="max-height: 150px;overflow-y: auto; list-style-type: none;">
         <li *ngFor="let item of c.appearances; let i=index;" (click)="openAppearanceModal(c._id,item)"><a
           class="badge badge-secondary">{{item.name}}</a></li>
       </ul>
@@ -49,7 +49,7 @@
               (click)="openAppearanceModal(c._id)">Add
         Appearance
       </button>
-      <button class="btn btn-success" (click)="openCOurseModal(c)">Update
+      <button class="btn btn-success" style="margin:7px; background-color: #aca7a7; border: #aca7a7;" (click)="openCOurseModal(c)">Update
       </button>
       <button (click)="delete(c)" class="btn btn-danger">Delete</button>
     </td>

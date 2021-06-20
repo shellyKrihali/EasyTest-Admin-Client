@@ -73,7 +73,11 @@ export class AppearanceModalComponent implements OnInit {
     if (this.selectedStudent && this.appearance.students.indexOf(this.selectedStudent) === -1) {
 
       this.courseService.addStudentFromCourseAppearance(this.appearance._id, this.selectedStudent._id).subscribe(res => {
+        console.log(this.appearance.students)
+        this.selectedStudent['student']= this.selectedStudent;
         this.appearance.students.push(this.selectedStudent);
+        console.log(this.appearance.students)
+
       }, (err) => {
         alert('Add students failed');
       });

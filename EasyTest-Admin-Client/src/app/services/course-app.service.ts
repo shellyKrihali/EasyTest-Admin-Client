@@ -42,7 +42,7 @@ export class CourseAppService {
 
   public getAllCourseStudents(courseAppId):Promise<any> {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };
@@ -51,7 +51,7 @@ export class CourseAppService {
 
   public getCourseAppReport(courseAppId){
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };

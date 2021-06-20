@@ -39,3 +39,6 @@ p{
   border-radius: 50%;
 
 }
+a{
+  cursor: pointer;
+}

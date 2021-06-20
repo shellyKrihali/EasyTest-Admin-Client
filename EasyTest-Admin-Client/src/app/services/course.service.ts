@@ -20,7 +20,7 @@ export class CourseService {
 
   public getAllCourses() {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };
@@ -43,7 +43,7 @@ export class CourseService {
 //upload new course
   createAppearance(appearance) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };
@@ -53,7 +53,7 @@ export class CourseService {
 
   updateAppearance(appearance, id) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };
@@ -67,7 +67,7 @@ export class CourseService {
 
   createCourse(course: any) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };
@@ -76,7 +76,7 @@ export class CourseService {
 
   updateCourse(course: any) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };
@@ -85,7 +85,7 @@ export class CourseService {
 
   deleteStudentFromCourseAppearance(courseAppId: any, sId: any) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };console.log(sId)
@@ -94,7 +94,7 @@ export class CourseService {
 
   addStudentFromCourseAppearance(courseAppId: any, sId: any) {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-admin")}`);
     const httpOptions = {
       headers: headers
     };

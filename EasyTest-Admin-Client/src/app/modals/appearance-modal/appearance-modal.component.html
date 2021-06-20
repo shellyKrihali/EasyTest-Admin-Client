@@ -5,20 +5,25 @@
   </button>
 </div>
 <div class="modal-body">
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control" placeholder="name" [(ngModel)]="appearance.name">
+  </div> -->
+  <div class="form-group">
+    <label>Semester</label>
+    <select [(ngModel)]="appearance.name" class="form-control">
+      <option>2021 B</option>
+      <option>2022 A</option>
+      <option>2022 B</option>
+
+    </select>
   </div>
   <div class="form-group">
     <div class="row">
       <div class="col-sm-6">
-        <label>Exam Date A</label>
+        <label>Exam Date</label>
         <div class="input-group">
-          <input type="text"
-                 class="form-control"
-                 #dp="bsDatepicker"
-                 bsDatepicker
-                 [(bsValue)]="appearance.exams.exam">
+          <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="appearance.exams.exam">
         </div>
       </div>
       <div class="col-sm-6">
@@ -30,13 +35,9 @@
   <div class="form-group">
     <div class="row">
       <div class="col-sm-6">
-        <label>Exam Date B</label>
+        <label>Remake Date</label>
         <div class="input-group">
-          <input type="text"
-                 class="form-control"
-                 #dp="bsDatepicker"
-                 bsDatepicker
-                 [(bsValue)]="appearance.exams.remake">
+          <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="appearance.exams.remake">
         </div>
       </div>
       <div class="col-sm-6">
@@ -46,15 +47,12 @@
   </div>
   <div class="form-group">
 
-    <input
-      type="checkbox"
-      [(ngModel)]="appearance.exams.withMaterials"
-      [ngModelOptions]="{standalone: true}"/>
+    <input type="checkbox" [(ngModel)]="appearance.exams.withMaterials" [ngModelOptions]="{standalone: true}" />
     <label class="ml-2">With Materials?</label>
   </div>
   <div class="form-group">
     <label>Duration</label>
-    <input type="number" class="form-control" placeholder="name" [(ngModel)]="appearance.exams.duration">
+    <input type="number" class="form-control" placeholder="Duration..." [(ngModel)]="appearance.exams.duration">
   </div>
   <div class="form-group" *ngIf="students &&appearance._id">
     <label>Students</label>
@@ -72,7 +70,8 @@
           <li *ngFor="let s of appearance.students; let i=index">
             <div class="d-flex align-items-center">
               <span>{{s.student.name}}</span>
-              <samll class="text-danger ml-auto" (click)="removeStudent(s.student,i)" style="cursor:pointer;">Remove</samll>
+              <samll class="text-danger ml-auto" (click)="removeStudent(s.student,i)" style="cursor:pointer;">Remove
+              </samll>
             </div>
           </li>
         </ul>
@@ -85,4 +84,3 @@
   <!--button class="btn btn-warning" (click)="onDelete()">Delete Appearance</button-->
   <button class="btn btn-primary" (click)="onSubmit()">Save</button>
 </div>
-

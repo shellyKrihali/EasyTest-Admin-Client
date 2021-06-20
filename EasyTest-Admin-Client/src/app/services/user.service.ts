@@ -18,25 +18,25 @@ export class UserService {
   constructor(private http: HttpClient, private cookieServise: CookieService) {
     //cookieServise.delete("user");
     // cookieServise.delete("token");
-    if (cookieServise.check("user")) {
-      this.user = JSON.parse(cookieServise.get("user"));
+    if (cookieServise.check("admin")) {
+      this.user = JSON.parse(cookieServise.get("admin"));
     }
   }
 
   checkIfUserIsAdmin() {
-    this.user = JSON.parse(this.cookieServise.get("user"));
+    this.user = JSON.parse(this.cookieServise.get("admin"));
     return this.user.type === 'ADMIN';
   }
 
   public login(email: string, password: string): Promise<any> {
-    return this.http.post<any>(`${environment.apiUrl}/users/login`, {email: email, password: password})
+    return this.http.post<any>(`${environment.apiUrl}/users/login-admin`, {email: email, password: password})
       .toPromise()
       .then(json => {
         // console.log(json.user);
         this.user = json["user"];
         console.log(this.user);
-        this.cookieServise.set("user", JSON.stringify(json.user));
-        this.cookieServise.set("token", json.token);
+        this.cookieServise.set("admin", JSON.stringify(json.user));
+        this.cookieServise.set("token-admin", json.token);
       });
   }
 
@@ -45,8 +45,8 @@ export class UserService {
   }
 
   public logOut() {
-    this.cookieServise.delete("user");
-    this.cookieServise.delete("token");
+    this.cookieServise.delete("admin");
+    this.cookieServise.delete("token-admin");
   }
 
   create(user, file) {

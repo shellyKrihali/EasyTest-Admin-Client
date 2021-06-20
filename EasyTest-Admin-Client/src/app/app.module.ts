@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import {HttpClientModule} from '@angular/common/http';
 import {MainPageComponent} from './main-page/main-page.component';
 import {NavBarComponent} from './nav-bar/nav-bar.component';

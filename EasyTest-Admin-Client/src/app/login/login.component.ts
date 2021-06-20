@@ -37,10 +37,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogIn() {
+
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
-    console.log("yes");
+    console.log(email);
+    console.log(password);
+    
     this.isValid = true;
     this.service.login(email, password).catch((err: HttpErrorResponse) => {
       console.log('An error occurred:', err.error);

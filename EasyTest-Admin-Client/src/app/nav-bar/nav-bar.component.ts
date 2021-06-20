@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
   getLoggedUser() {
-    const isAuth = this.cookieService.check("user");
+    const isAuth = this.cookieService.check("admin");
     if (isAuth) {
       this.user = this.service.user;
       return true;
@@ -38,8 +38,8 @@ export class NavBarComponent implements OnInit {
 
   logOut() {
     console.log("Log Out");
-    this.cookieService.delete("user");
-    this.cookieService.delete("token");
+    this.cookieService.delete("admin");
+    this.cookieService.delete("token-admin");
     this.router.navigate(['/log-in']);
   }
 }

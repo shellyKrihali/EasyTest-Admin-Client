@@ -24,8 +24,12 @@ export class ViolationReportComponent implements OnInit {
       this.courses = res.courses;
       this.courses.forEach(element => {
         console.log(element);
-
+        console.log(element.name);
+        
         element.appearances.forEach(app => {
+          console.log(app);
+          console.log(element.name);
+          app['coursename']= element.name;
           console.log(app);
 
           this.apps.push(app);

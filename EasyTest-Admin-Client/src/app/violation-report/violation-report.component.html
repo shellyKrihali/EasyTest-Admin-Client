@@ -1,13 +1,15 @@
+<hr>
 <div class="select-course">
-  <mat-form-field appearance="fill">
-    <mat-label>Choose Course Appearance</mat-label>
+  <mat-form-field appearance="fill"  >
+    <mat-label *ngIf="!selectedApp">Choose Course Appearance</mat-label>
     <mat-select [(ngModel)]="selectedApp" (selectionChange)="reloadTable()" name="action">
-      <mat-option class="my-option" *ngFor="let app of apps" [value]="app">
-        {{app.name}}
+      <mat-option class="my-option" style="margin-top: 5px;" *ngFor="let app of apps" [value]="app">
+        {{app.coursename +" - "+ app.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
+<hr>
 <div class="report-table">
   <table class="table">
     <thead class="thead-dark">
